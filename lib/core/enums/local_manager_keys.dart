@@ -1,0 +1,1 @@
+enum LocalManagerKeys { token, darkMode }
