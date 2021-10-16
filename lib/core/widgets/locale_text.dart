@@ -17,7 +17,7 @@ class LocaleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
-      value.locale,
+      value.translate,
       textAlign: textAlign ?? TextAlign.right,
       style: style ?? const TextStyle(),
     );

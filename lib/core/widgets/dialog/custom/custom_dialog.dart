@@ -124,7 +124,7 @@ class CustomDialog extends PlatformSensitiveWidget {
                 context, leftButtonColor ?? context.canvasColor),
             onPressed: leftButtonAction ?? () => Navigator.of(context).pop(),
             child: Text(
-              leftButtonTextKey.locale,
+              leftButtonTextKey.translate,
               style: context.headline4.copyWith(
                   color: leftButtonTextColor ?? context.primaryDarkColor),
             ),
@@ -142,7 +142,7 @@ class CustomDialog extends PlatformSensitiveWidget {
             if (willPop) Navigator.of(context).pop();
           },
           child: Text(
-            rightButtonTextKey.locale,
+            rightButtonTextKey.translate,
             style: context.headline4.copyWith(
                 color: rightButtonTextColor ?? context.primaryDarkColor),
             textAlign: TextAlign.center,
@@ -160,7 +160,7 @@ class CustomDialog extends PlatformSensitiveWidget {
           child: CupertinoDialogAction(
             onPressed: leftButtonAction ?? () => Navigator.of(context).pop(),
             child: Text(
-              leftButtonTextKey.locale,
+              leftButtonTextKey.translate,
               style: context.headline4.copyWith(color: leftButtonColor),
               textAlign: TextAlign.center,
             ),
@@ -177,7 +177,7 @@ class CustomDialog extends PlatformSensitiveWidget {
             action();
           },
           child: Text(
-            rightButtonTextKey.locale,
+            rightButtonTextKey.translate,
             style: context.headline4.copyWith(color: rightButtonColor),
             textAlign: TextAlign.center,
           ),

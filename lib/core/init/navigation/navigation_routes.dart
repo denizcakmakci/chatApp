@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../../views/screens/example_screen.dart';
+import '../../../views/screens/auth/signin/signin_view.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
@@ -14,7 +14,7 @@ class NavigationRoute {
       case NavigationConstants.home:
         return normalNavigate(Container());
       default:
-        return normalNavigate(const ExampleScreen());
+        return normalNavigate(SignIn());
     }
   }
 
