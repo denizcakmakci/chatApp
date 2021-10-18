@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
 
   TextFormField textFormField(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
       controller: controller,

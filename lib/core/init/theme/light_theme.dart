@@ -7,7 +7,7 @@ final ThemeData _lightTheme = ThemeData(
   primaryColorBrightness: Brightness.dark,
   primaryColorLight: const Color(0xff353535),
   primaryColorDark: const Color(0xff13074A),
-  canvasColor: const Color(0xffF5F4F2),
+  canvasColor: const Color(0xffE6F0FD),
   scaffoldBackgroundColor: const Color(0xffFFFFFF),
   bottomAppBarColor: const Color(0xffffffff),
   cardColor: const Color(0xffffffff),
