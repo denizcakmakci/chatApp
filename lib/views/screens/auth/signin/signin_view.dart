@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +46,9 @@ class SignIn extends StatelessWidget {
 
   Column body(BuildContext context, SigninViewModel _model) => Column(
         children: [
-          const Spacer(flex: 2),
+          SizedBox(
+            height: context.height * 7,
+          ),
           const Expanded(flex: 1, child: TitleText(text: 'signup')),
           const Spacer(flex: 1),
           Expanded(
@@ -106,7 +110,7 @@ class SignIn extends StatelessWidget {
           child: CountryCodePicker(
             onChanged: (e) {
               _model.changeLangCode(e.dialCode);
-              print(_model.phoneNumber);
+              log(_model.phoneNumber);
             },
             initialSelection: 'TR',
             textStyle: context.headline1

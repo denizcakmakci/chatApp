@@ -6,6 +6,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/base_view_model.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
+import '../../../../core/enums/local_manager_keys.dart';
 
 part 'verify_view_model.g.dart';
 
@@ -33,7 +34,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
   }
 
   @observable
-  late bool isLoading;
+  bool isLoading = true;
 
   @action
   changeLoading(bool value) {
@@ -64,6 +65,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
         log("verify phone number : code success send");
         this.verificationId = verificationId;
         changeLoading(false);
+        log(isLoading.toString());
       },
       codeAutoRetrievalTimeout: (verificationId) {},
       timeout: _durationTimeOut,
@@ -86,6 +88,8 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
 
         if (_auth.currentUser != null) {
           /// authentication success
+          var _uid = _auth.currentUser!.uid;
+          localeManager.setStringValue(LocalManagerKeys.token, _uid);
 
           navigation.navigateToPage(path: NavigationConstants.home);
         } else {
@@ -106,7 +110,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
         ModalRoute.of(context!)!.settings.arguments as Map<String, dynamic>;
     //phoneNumber = phone.values.toString();
     getPhoneNumber(phone.values.toString());
-    print(phoneNumber);
+    log(phoneNumber);
     verifyPhoneNumber();
   }
 }

@@ -1,1 +1,1 @@
-enum LocalManagerKeys { token, darkMode }
+enum LocalManagerKeys { token, darkMode, isFirstApp }

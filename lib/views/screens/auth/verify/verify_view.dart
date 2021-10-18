@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -44,13 +43,18 @@ class Verify extends StatelessWidget {
 
   Column body(BuildContext context, VerifyViewModel _model) => Column(
         children: [
-          const Spacer(flex: 2),
+          SizedBox(
+            height: context.height * 7,
+          ),
           const Expanded(flex: 1, child: TitleText(text: 'OTP Verification')),
           const Spacer(flex: 1),
           Expanded(flex: 6, child: illustration()),
           const Spacer(flex: 2),
           Expanded(flex: 1, child: subTitle(context, _model)),
+          const Spacer(flex: 2),
           pinAutoField(context, _model),
+          const Spacer(flex: 1),
+          Expanded(flex: 2, child: resendCode(context, _model)),
           button(_model, context),
           const Spacer(flex: 8),
         ],
@@ -63,39 +67,61 @@ class Verify extends StatelessWidget {
   }
 
   Widget subTitle(BuildContext context, VerifyViewModel _model) {
-    return Text(
-      'Please enter the code send to ${_model.phoneNumber}',
+    return RichText(
+        text: TextSpan(
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
-    );
+      children: <TextSpan>[
+        const TextSpan(text: 'Please enter the code send to '),
+        TextSpan(
+            text:
+                _model.phoneNumber.substring(1, _model.phoneNumber.length - 1),
+            style: context.headline2
+                .copyWith(fontSize: (context.width + context.height) / .9)),
+      ],
+    ));
+  }
+
+  Widget resendCode(BuildContext context, VerifyViewModel _model) {
+    return RichText(
+        text: TextSpan(
+      style: context.headline3
+          .copyWith(fontSize: (context.width + context.height) / .9),
+      children: <TextSpan>[
+        const TextSpan(text: 'Didn\'t resend the code?  '),
+        TextSpan(
+            text: 'Resend',
+            style: context.headline2
+                .copyWith(fontSize: (context.width + context.height) / .9)),
+      ],
+    ));
   }
 
   Widget pinAutoField(BuildContext context, VerifyViewModel _model) {
-    return PinFieldAutoFill(
-      controller: _model.otp,
-      codeLength: 6,
-      decoration: BoxLooseDecoration(
-        bgColorBuilder: FixedColorBuilder(context.canvasColor),
-        strokeColorBuilder: FixedColorBuilder(context.canvasColor),
-        gapSpace: 10,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.width * 10),
+      child: PinFieldAutoFill(
+        controller: _model.otp,
+        codeLength: 6,
+        decoration: BoxLooseDecoration(
+          bgColorBuilder: FixedColorBuilder(context.canvasColor),
+          strokeColorBuilder: FixedColorBuilder(context.canvasColor),
+          gapSpace: context.width * 4,
+        ),
       ),
     );
   }
 
-  CustomButton button(VerifyViewModel _model, BuildContext context) {
+  Widget button(VerifyViewModel _model, BuildContext context) {
     return CustomButton(
-      onpressed: _model.isLoading ? null : () => _model.verifySmsCode(),
-      child: _model.isLoading
-          ? const SizedBox(
-              width: 30,
-              height: 30,
-              child: CircularProgressIndicator(),
-            )
-          : Text(
-              'Verify OTP',
-              style: context.headline1
-                  .copyWith(fontSize: (context.width + context.height) / .85),
-            ),
+      onpressed: () {
+        _model.verifySmsCode();
+      },
+      child: Text(
+        'Verify OTP',
+        style: context.headline1
+            .copyWith(fontSize: (context.width + context.height) / .85),
+      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_template/core/helper/utils.dart';
 import 'package:provider/provider.dart';
 
 import 'core/init/cache/locale_manager.dart';
@@ -34,7 +35,6 @@ void main() async {
       ),
     ),
   ));
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class _MyApp extends StatelessWidget {
@@ -44,6 +44,9 @@ class _MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark));
     return Consumer<ThemeProvider>(
       builder: (context, themeModel, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
