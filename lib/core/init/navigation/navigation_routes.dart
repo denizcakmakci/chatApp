@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import '../../../views/screens/auth/setProfile/set_profile_view.dart';
 
 import '../../../views/screens/auth/signin/signin_view.dart';
 import '../../../views/screens/auth/verify/verify_view.dart';
@@ -20,6 +21,8 @@ class NavigationRoute {
         return normalNavigate(const SignIn());
       case NavigationConstants.verify:
         return normalNavigate(const Verify());
+      case NavigationConstants.setProfile:
+        return normalNavigate(const SetProfileView());
       default:
         return normalNavigate(const SignIn());
     }

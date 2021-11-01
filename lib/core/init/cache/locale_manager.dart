@@ -33,7 +33,7 @@ class LocaleManager {
     await _preferences?.setInt(key.toString(), value);
   }
 
-  Future<String> getStringValue(LocalManagerKeys key) async =>
+  String getStringValue(LocalManagerKeys key) =>
       _preferences?.getString(key.toString()) ?? 'Not Found';
 
   Future<bool> getBoolValue(LocalManagerKeys key) async =>

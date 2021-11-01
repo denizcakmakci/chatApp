@@ -4,8 +4,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../core/base/base_view.dart';
 import '../../../../core/init/extensions/extension_shelf.dart';
-import '../components/button.dart';
-import '../components/title_text.dart';
+import '../components/auth_component_shelf.dart';
 import 'verify_view_model.dart';
 
 class Verify extends StatelessWidget {

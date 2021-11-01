@@ -6,9 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/base/base_view.dart';
 
 import '../../../../core/init/extensions/extension_shelf.dart';
-import '../components/button.dart';
-import '../components/text_field.dart';
-import '../components/title_text.dart';
+import '../components/auth_component_shelf.dart';
 import 'signin_view_model.dart';
 
 class SignIn extends StatelessWidget {

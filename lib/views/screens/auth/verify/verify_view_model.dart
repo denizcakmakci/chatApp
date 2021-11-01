@@ -7,6 +7,7 @@ import 'package:mobx/mobx.dart';
 import '../../../../core/base/base_view_model.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../../core/enums/local_manager_keys.dart';
+import '../../../../core/services/firebase/database_service.dart';
 
 part 'verify_view_model.g.dart';
 
@@ -18,16 +19,14 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String? verificationId;
+  DatabaseService service = DatabaseService();
 
+  String? verificationId;
   final otp = TextEditingController();
   final _auth = FirebaseAuth.instance;
   final _durationTimeOut = const Duration(seconds: 60);
-
   bool isCanResendCode = false;
-
-  @observable
-  late String phoneNumber;
+  late final String phoneNumber;
 
   getPhoneNumber(String phone) {
     phoneNumber = phone;
@@ -51,7 +50,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
       verificationCompleted: (phoneAuthCredential) async {
         log("verify phone number : verification completed");
         await _auth.signInWithCredential(phoneAuthCredential);
-        navigation.navigateToPage(path: NavigationConstants.home);
+        navigation.navigateToPage(path: NavigationConstants.setProfile);
       },
       verificationFailed: (FirebaseAuthException e) {
         changeLoading(false);
@@ -79,27 +78,27 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
       try {
         await _auth.signInWithCredential(PhoneAuthProvider.credential(
             verificationId: verificationId!, smsCode: otp.text));
+        if (_auth.currentUser != null) {
+          /// authentication success
+          var _uid = _auth.currentUser!.uid;
+
+          await localeManager.setStringValue(LocalManagerKeys.token, _uid);
+          await service.addUsers(phoneNumber.substring(
+              1, phoneNumber.length - 1)); // add user database
+          navigation.navigateToPage(path: NavigationConstants.setProfile);
+        } else {
+          /// authentication failed
+          log("authentication failed");
+        }
         // ignore: avoid_catches_without_on_clauses
       } catch (e) {
         // ignore: avoid_print
         print("invalid code");
-      } finally {
-        isLoading = false;
-
-        if (_auth.currentUser != null) {
-          /// authentication success
-          var _uid = _auth.currentUser!.uid;
-          localeManager.setStringValue(LocalManagerKeys.token, _uid);
-
-          navigation.navigateToPage(path: NavigationConstants.home);
-        } else {
-          /// authentication failed
-          ScaffoldMessenger.of(context!).showSnackBar(
-            const SnackBar(
-              content: Text('Invalid Code Please enter the correct code'),
-            ),
-          );
-        }
+        ScaffoldMessenger.of(context!).showSnackBar(
+          const SnackBar(
+            content: Text('Invalid Code Please enter the correct code'),
+          ),
+        );
       }
     }
   }
@@ -108,7 +107,6 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
   void init() {
     final phone =
         ModalRoute.of(context!)!.settings.arguments as Map<String, dynamic>;
-    //phoneNumber = phone.values.toString();
     getPhoneNumber(phone.values.toString());
     log(phoneNumber);
     verifyPhoneNumber();
