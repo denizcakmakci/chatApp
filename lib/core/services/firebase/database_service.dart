@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:contacts_service/contacts_service.dart';
 import '../../enums/local_manager_keys.dart';
 import '../../init/cache/locale_manager.dart';
 
@@ -48,5 +49,28 @@ class DatabaseService {
     );
 
     return isValidUser;
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getPhoneNumber(
+      List<dynamic> tempContact) async {
+    var ref = await _firestore
+        .collection('users')
+        .where('phone_number', whereIn: tempContact)
+        .get();
+    for (var res in ref.docs) {
+      log(res.data().toString());
+    }
+    return ref;
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> phoneNumberSearchQuery(
+      List<dynamic> tempContact, String type) {
+    var ref = _firestore
+        .collection('users')
+        .where('phone_number', whereIn: tempContact)
+        .where('searchKey', isGreaterThanOrEqualTo: type)
+        .where('searchKey', isLessThan: '${type}z')
+        .snapshots();
+    return ref;
   }
 }

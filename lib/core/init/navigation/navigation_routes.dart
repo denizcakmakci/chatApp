@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../../views/screens/auth/setProfile/set_profile_view.dart';
 
+import '../../../views/screens/auth/setProfile/set_profile_view.dart';
 import '../../../views/screens/auth/signin/signin_view.dart';
 import '../../../views/screens/auth/verify/verify_view.dart';
+import '../../../views/screens/contacts/contacts_view.dart';
 import '../../../views/screens/example_screen.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
@@ -24,7 +25,7 @@ class NavigationRoute {
       case NavigationConstants.setProfile:
         return normalNavigate(const SetProfileView());
       default:
-        return normalNavigate(const SignIn());
+        return normalNavigate(const ContactsView());
     }
   }
 
