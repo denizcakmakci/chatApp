@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/base_view_model.dart';
+import '../../../../core/constants/navigation/navigation_constants.dart';
 import '../../../../core/services/firebase/database_service.dart';
 
 part 'set_profile_view_model.g.dart';
@@ -70,6 +71,10 @@ abstract class _SetProfileViewModelBase with Store, BaseViewModel {
     } else {
       service.updateUsers(controller.text, photoURL ?? defaultUserPhoto);
     }
+  }
+
+  goToHome() {
+    navigation.navigateToPage(path: NavigationConstants.contacts);
   }
 
   @override

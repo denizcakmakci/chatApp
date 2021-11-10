@@ -25,11 +25,15 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
   final otp = TextEditingController();
   final _auth = FirebaseAuth.instance;
   final _durationTimeOut = const Duration(seconds: 60);
-  bool isCanResendCode = false;
+
   late final String phoneNumber;
 
-  getPhoneNumber(String phone) {
-    phoneNumber = phone;
+  @observable
+  bool isCanResendCode = false;
+
+  @action
+  changeResendCode(bool value) {
+    isCanResendCode = value;
   }
 
   @observable
@@ -40,10 +44,14 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
     isLoading = value;
   }
 
+  getPhoneNumber(String phone) {
+    phoneNumber = phone;
+  }
+
   void verifyPhoneNumber() async {
     changeLoading(true);
 
-    isCanResendCode = false;
+    changeResendCode(false);
 
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
@@ -54,7 +62,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
       },
       verificationFailed: (FirebaseAuthException e) {
         changeLoading(false);
-        isCanResendCode = true;
+        changeResendCode(true);
         log(e.toString());
         ScaffoldMessenger.of(context!).showSnackBar(
           SnackBar(content: Text(e.toString())),

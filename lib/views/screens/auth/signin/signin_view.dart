@@ -45,7 +45,7 @@ class SignIn extends StatelessWidget {
   Column body(BuildContext context, SigninViewModel _model) => Column(
         children: [
           SizedBox(
-            height: context.height * 7,
+            height: context.height * 5,
           ),
           const Expanded(flex: 1, child: TitleText(text: 'signup')),
           const Spacer(flex: 1),

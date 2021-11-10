@@ -6,6 +6,7 @@ import '../../../views/screens/auth/signin/signin_view.dart';
 import '../../../views/screens/auth/verify/verify_view.dart';
 import '../../../views/screens/contacts/contacts_view.dart';
 import '../../../views/screens/example_screen.dart';
+import '../../../views/screens/splash/splash_view.dart';
 import '../../constants/navigation/navigation_constants.dart';
 
 class NavigationRoute {
@@ -24,8 +25,10 @@ class NavigationRoute {
         return normalNavigate(const Verify());
       case NavigationConstants.setProfile:
         return normalNavigate(const SetProfileView());
-      default:
+      case NavigationConstants.contacts:
         return normalNavigate(const ContactsView());
+      default:
+        return normalNavigate(const SplashView());
     }
   }
 

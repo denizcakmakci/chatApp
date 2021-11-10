@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:contacts_service/contacts_service.dart';
 import '../../enums/local_manager_keys.dart';
 import '../../init/cache/locale_manager.dart';
 

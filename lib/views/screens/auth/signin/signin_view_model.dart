@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/core/services/firebase/database_service.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/base_view_model.dart';
+import '../../../../core/services/firebase/database_service.dart';
 import '../verify/verify_view.dart';
 
 part 'signin_view_model.g.dart';
@@ -32,8 +32,8 @@ abstract class _SigninViewModelBase with Store, BaseViewModel {
   void register(BuildContext context) async {
     service.phoneNumberExists(phoneNumber.trim()).then((exist) {
       if (!exist) {
-        if (controller.text.trim().isNotEmpty &&
-            controller.text.trim().length == 10) {
+        if (controller.text.replaceAll(' ', '').isNotEmpty &&
+            controller.text.replaceAll(' ', '').length == 10) {
           Navigator.push(
               context,
               MaterialPageRoute(

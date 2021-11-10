@@ -43,7 +43,7 @@ class Verify extends StatelessWidget {
   Column body(BuildContext context, VerifyViewModel _model) => Column(
         children: [
           SizedBox(
-            height: context.height * 7,
+            height: context.height * 5,
           ),
           const Expanded(flex: 1, child: TitleText(text: 'OTP Verification')),
           const Spacer(flex: 1),
@@ -82,18 +82,23 @@ class Verify extends StatelessWidget {
   }
 
   Widget resendCode(BuildContext context, VerifyViewModel _model) {
-    return RichText(
-        text: TextSpan(
-      style: context.headline3
-          .copyWith(fontSize: (context.width + context.height) / .9),
-      children: <TextSpan>[
-        const TextSpan(text: 'Didn\'t resend the code?  '),
-        TextSpan(
-            text: 'Resend',
-            style: context.headline2
-                .copyWith(fontSize: (context.width + context.height) / .9)),
-      ],
-    ));
+    return TextButton(
+      onPressed: () {
+        !_model.isCanResendCode ? _model.verifyPhoneNumber() : null;
+      },
+      child: RichText(
+          text: TextSpan(
+        style: context.headline3
+            .copyWith(fontSize: (context.width + context.height) / .9),
+        children: <TextSpan>[
+          const TextSpan(text: 'Didn\'t resend the code?  '),
+          TextSpan(
+              text: 'Resend',
+              style: context.headline2
+                  .copyWith(fontSize: (context.width + context.height) / .9)),
+        ],
+      )),
+    );
   }
 
   Widget pinAutoField(BuildContext context, VerifyViewModel _model) {

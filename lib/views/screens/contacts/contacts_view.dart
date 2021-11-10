@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../core/init/extensions/context/theme_extension.dart';
 
 import '../../../core/base/base_view.dart';
 import '../../../core/init/extensions/context/responsive_extension.dart';
+import '../../../core/init/extensions/context/theme_extension.dart';
 import 'contacts_view_model.dart';
 
 class ContactsView extends StatelessWidget {

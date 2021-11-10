@@ -3,4 +3,5 @@ class NavigationConstants {
   static const String signin = "/signin";
   static const String verify = "/verify";
   static const String setProfile = "/setProfile";
+  static const String contacts = "/contacts";
 }

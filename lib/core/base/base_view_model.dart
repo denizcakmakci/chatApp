@@ -1,9 +1,4 @@
-import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
 
 import '../init/cache/locale_manager.dart';
 import '../init/navigation/navigation_service.dart';

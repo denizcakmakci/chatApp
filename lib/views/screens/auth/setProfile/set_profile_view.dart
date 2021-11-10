@@ -28,9 +28,9 @@ class SetProfileView extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: context.height * 7,
+          height: context.height * 5,
         ),
-        const Expanded(flex: 1, child: TitleText(text: 'signup')),
+        const Expanded(flex: 2, child: TitleText(text: 'signup')),
         const Spacer(flex: 1),
         photo(context, _model),
         const Spacer(flex: 2),
@@ -106,21 +106,22 @@ class SetProfileView extends StatelessWidget {
   }
 
   Widget field(BuildContext context, SetProfileViewModel _model) {
-    return Flexible(
-        child: Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.width * 15),
       child: CustomTextField(
         isPrefix: false,
         hintText: 'Name',
         controller: _model.controller,
+        keyboardType: TextInputType.text,
       ),
-    ));
+    );
   }
 
   CustomButton button(BuildContext context, SetProfileViewModel _model) {
     return CustomButton(
-      onpressed: () {
-        _model.signinSuccess(context);
+      onpressed: () async {
+        await _model.signinSuccess(context);
+        _model.goToHome();
       },
       child: Text(
         'Done',

@@ -5,17 +5,24 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final bool isPrefix;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
   const CustomTextField(
-      {Key? key, this.hintText, this.isPrefix = true, required this.controller})
+      {Key? key,
+      this.hintText,
+      this.isPrefix = true,
+      required this.controller,
+      this.keyboardType})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 5,
-      shadowColor: context.primaryLightColor.withOpacity(.4),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: textFormField(context),
+    return SizedBox(
+      child: Material(
+        elevation: 5,
+        shadowColor: context.primaryLightColor.withOpacity(.4),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: textFormField(context),
+      ),
     );
   }
 
@@ -25,9 +32,9 @@ class CustomTextField extends StatelessWidget {
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
       controller: controller,
-      cursorHeight: (context.width + context.height / .9),
+      cursorHeight: (context.width + context.height / .8),
       cursorColor: context.primaryLightColor,
-      keyboardType: TextInputType.phone,
+      keyboardType: keyboardType ?? TextInputType.phone,
       decoration: inputDecoration(context),
     );
   }
