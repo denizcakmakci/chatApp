@@ -32,13 +32,14 @@ abstract class _ContactsViewModelBase with Store, BaseViewModel {
   @override
   Future<void> init() async {
     var _contacts = await ContactsService.getContacts(withThumbnails: false);
-    for (var i = 0; i < _contacts.length; i++) {
-      contacts.add('${_contacts[i].phones?.elementAt(0).value}'
+    log('${_contacts[5].phones?.elementAt(0).value}');
+    for (var i = 1; i < 10; i++) {
+      contacts.add('${_contacts[i].phones?.first.value}'
           .replaceAll('-', '')
           .replaceAll('(', '')
           .replaceAll(')', '')
           .replaceAll(' ', ''));
-      log(contacts[i]);
+      //log(contacts[i]);
     }
     var res = await service.getPhoneNumber(contacts);
     setPhones(res.docs);

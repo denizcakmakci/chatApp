@@ -52,9 +52,11 @@ class DatabaseService {
 
   Future<QuerySnapshot<Map<String, dynamic>>> getPhoneNumber(
       List<dynamic> tempContact) async {
+    var user = LocaleManager.instance.getStringValue(LocalManagerKeys.token);
     var ref = await _firestore
         .collection('users')
         .where('phone_number', whereIn: tempContact)
+        .where('user_id', isNotEqualTo: user)
         .get();
     for (var res in ref.docs) {
       log(res.data().toString());

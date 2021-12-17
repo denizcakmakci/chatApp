@@ -107,6 +107,9 @@ class Verify extends StatelessWidget {
       child: PinFieldAutoFill(
         controller: _model.otp,
         codeLength: 6,
+        onCodeSubmitted: (code) {
+          _model.verifySmsCode();
+        },
         decoration: BoxLooseDecoration(
           bgColorBuilder: FixedColorBuilder(context.canvasColor),
           strokeColorBuilder: FixedColorBuilder(context.canvasColor),

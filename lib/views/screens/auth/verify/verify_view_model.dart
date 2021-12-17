@@ -58,6 +58,8 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
       verificationCompleted: (phoneAuthCredential) async {
         log("verify phone number : verification completed");
         await _auth.signInWithCredential(phoneAuthCredential);
+        // await service
+        //     .addUsers(phoneNumber.substring(1, phoneNumber.length - 1));
         navigation.navigateToPage(path: NavigationConstants.setProfile);
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -93,6 +95,7 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
           await localeManager.setStringValue(LocalManagerKeys.token, _uid);
           await service.addUsers(phoneNumber.substring(
               1, phoneNumber.length - 1)); // add user database
+          log('eklendi');
           navigation.navigateToPage(path: NavigationConstants.setProfile);
         } else {
           /// authentication failed

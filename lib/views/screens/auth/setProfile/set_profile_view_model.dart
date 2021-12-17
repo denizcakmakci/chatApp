@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:flutter_template/core/constants/navigation/string_constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 
@@ -21,8 +22,6 @@ abstract class _SetProfileViewModelBase with Store, BaseViewModel {
 
   DatabaseService service = DatabaseService();
 
-  String defaultUserPhoto =
-      'https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png';
   final TextEditingController controller = TextEditingController();
   final _auth = FirebaseAuth.instance;
   File? imagePath;
@@ -44,7 +43,8 @@ abstract class _SetProfileViewModelBase with Store, BaseViewModel {
   }
 
   getImage() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    var image = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 50);
     imagePath = File(image!.path);
     changeIsLoading();
     var ref = firebase_storage.FirebaseStorage.instance

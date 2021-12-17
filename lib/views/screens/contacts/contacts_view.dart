@@ -29,7 +29,6 @@ class ContactsView extends StatelessWidget {
   AppBar appBar(BuildContext context) {
     return AppBar(
       leading: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-      //centerTitle: false,
       title: Text(
         'Contacts',
         style: context.headline3
@@ -58,7 +57,10 @@ class ContactsView extends StatelessWidget {
                     )),
                   ),
                   title: Text(_model.phones[index]['name'] ?? 'bos'),
-                  subtitle: Text(_model.phones[index]['phone_number'] ?? 'bos'),
+                  subtitle: Text(
+                    _model.phones[index]['phone_number'] ?? 'bos',
+                    style: context.softText,
+                  ),
                 );
               },
             ),

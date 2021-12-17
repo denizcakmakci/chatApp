@@ -25,10 +25,10 @@ final ThemeData _lightTheme = ThemeData(
   hintColor: const Color(0xff3F3D56),
   errorColor: const Color(0xffd32f2f),
   appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.white,
-    iconTheme: IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(color: Colors.black),
-  ),
+      backgroundColor: Colors.white,
+      iconTheme: IconThemeData(color: Colors.black),
+      titleTextStyle: TextStyle(color: Colors.black),
+      centerTitle: true),
   buttonTheme: const ButtonThemeData(),
 );
 
