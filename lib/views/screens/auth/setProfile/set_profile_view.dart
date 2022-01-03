@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/base/base_view.dart';
+import '../../../../core/constants/navigation/string_constants.dart';
 import '../../../../core/init/extensions/extension_shelf.dart';
 import '../components/auth_component_shelf.dart';
 import 'set_profile_view_model.dart';
@@ -30,7 +31,7 @@ class SetProfileView extends StatelessWidget {
         SizedBox(
           height: context.height * 5,
         ),
-        const Expanded(flex: 2, child: TitleText(text: 'signup')),
+        const Expanded(flex: 2, child: TitleText(text: 'set_profile')),
         const Spacer(flex: 1),
         photo(context, _model),
         const Spacer(flex: 2),
@@ -64,7 +65,7 @@ class SetProfileView extends StatelessWidget {
                   child: _model.isLoading
                       ? Image.asset('assets/gifs/load.gif')
                       : Image.network(
-                          _model.photoURL ?? _model.defaultUserPhoto,
+                          _model.photoURL ?? defaultUserPhoto,
                           fit: BoxFit.cover,
                         ),
                 );
@@ -99,7 +100,7 @@ class SetProfileView extends StatelessWidget {
 
   Text subTitle(BuildContext context) {
     return Text(
-      'Please enter your name',
+      'enter_name'.translate,
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
     );
@@ -110,7 +111,7 @@ class SetProfileView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: context.width * 15),
       child: CustomTextField(
         isPrefix: false,
-        hintText: 'Name',
+        hintText: 'name'.translate,
         controller: _model.controller,
         keyboardType: TextInputType.text,
       ),
@@ -121,10 +122,9 @@ class SetProfileView extends StatelessWidget {
     return CustomButton(
       onpressed: () async {
         await _model.signinSuccess(context);
-        _model.goToHome();
       },
       child: Text(
-        'Done',
+        'done'.translate,
         style: context.headline1
             .copyWith(fontSize: (context.width + context.height) / .85),
       ),

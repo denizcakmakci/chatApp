@@ -1,4 +1,21 @@
 {
     "hello": "Merhaba",
-    "signup": "Kayıt ol"
+    "signup": "Kayıt ol",
+    "enter_phone": "Telefon numaranızı girin",
+    "send_code": "Size bir OTP kodu göndereceğiz.",
+    "phone_number": "Telefon numarası",
+    "send_otp": "OTP gönder",
+    "verify_otp": "OTP Doğrulama",
+    "send_code_number": "Lütfen gönderilen kodu girin ",
+    "did_send_code": "Kodu tekrar göndermedi mi?  ",
+    "resend": "Yeniden gönder",
+    "verify_otp_button": "OTP'yi doğrula",
+    "set_profile": "Profilinizi ayarlayın",
+    "enter_name": "Lütfen adınızı giriniz",
+    "done": "Giriş",
+    "name": "İsim",
+    "no_empty": "Giriş alanı boş bırakılamaz.",
+    "invalid_phone": "Telefon numarası geçersiz.",
+    "already_phone": "Telefon numarası zaten kayıtlı.",
+    "incoming": "Gelen çağrı..."
 }

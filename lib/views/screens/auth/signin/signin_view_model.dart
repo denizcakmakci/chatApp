@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/base_view_model.dart';
+import '../../../../core/init/extensions/string/locale_text_extensions.dart';
 import '../../../../core/services/firebase/database_service.dart';
 import '../verify/verify_view.dart';
 
@@ -43,12 +44,12 @@ abstract class _SigninViewModelBase with Store, BaseViewModel {
                   )));
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Telefon numarasi gecersiz')),
+            SnackBar(content: Text('invalid_phone'.translate)),
           );
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Telefon numarasi zaten kayitli')),
+          SnackBar(content: Text('already_phone'.translate)),
         );
       }
     });

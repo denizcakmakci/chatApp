@@ -39,6 +39,10 @@
 	<string>Used to capture audio for image picker plugin</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to demonstrate image picker plugin</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>bluetooth</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>bluetooth</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>

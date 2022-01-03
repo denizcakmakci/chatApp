@@ -1,11 +1,20 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+
 import '../../enums/local_manager_keys.dart';
 import '../../init/cache/locale_manager.dart';
 
 class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
+
+  Future<auth.User?> getCurrentUser() async {
+    auth.User? currentUser;
+    currentUser = _auth.currentUser;
+    return currentUser;
+  }
 
   Future<void> addUsers(String phone) async {
     var user = LocaleManager.instance
@@ -48,6 +57,12 @@ class DatabaseService {
     );
 
     return isValidUser;
+  }
+
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUserDetails() async {
+    var user = LocaleManager.instance.getStringValue(LocalManagerKeys.token);
+    var ref = _firestore.collection('users').doc(user).get();
+    return ref;
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getPhoneNumber(

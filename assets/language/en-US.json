@@ -1,4 +1,21 @@
 {
     "hello": "Hi",
-    "signup": "Sign Up"
+    "signup": "Sign Up",
+    "enter_phone": "Enter your mobile number",
+    "send_code": "We will send you a OTP code",
+    "phone_number": "Phone number",
+    "send_otp": "Send OTP",
+    "verify_otp": "OTP Verification",
+    "send_code_number": "Please enter the code send to ",
+    "did_send_code": "Didn't resend the code?  ",
+    "resend": "Resend",
+    "verify_otp_button": "Verify OTP",
+    "set_profile": "Set Your Profile",
+    "enter_name": "Please enter your name",
+    "done": "Done",
+    "name": "Name",
+    "no_empty": "The input field cannot be left blank.",
+    "invalid_phone": "Phone number is invalid.",
+    "already_phone": "Phone number already registered.",
+    "incoming": "Incoming..."
 }

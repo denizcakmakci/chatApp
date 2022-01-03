@@ -25,4 +25,7 @@ class Post {
   String toJson() => json.encode(toMap());
 
   factory Post.fromJson(String source) => Post.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'Post(id: $id, name: $name)';
 }

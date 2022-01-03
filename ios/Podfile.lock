@@ -338,6 +338,10 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - agora_rtc_engine (4.0.7):
+    - AgoraRtcEngine_iOS (= 3.5.0.3)
+    - Flutter
+  - AgoraRtcEngine_iOS (3.5.0.3)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -460,6 +464,8 @@ PODS:
   - nanopb/encode (2.30908.0)
   - path_provider (0.0.1):
     - Flutter
+  - "permission_handler (5.1.0+2)":
+    - Flutter
   - PromisesObjC (2.0.0)
   - shared_preferences (0.0.1):
     - Flutter
@@ -470,6 +476,7 @@ PODS:
     - FMDB (>= 2.7.5)
 
 DEPENDENCIES:
+  - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
@@ -478,6 +485,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sms_autofill (from `.symlinks/plugins/sms_autofill/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
@@ -485,6 +493,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AgoraRtcEngine_iOS
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAuth
@@ -503,6 +512,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  agora_rtc_engine:
+    :path: ".symlinks/plugins/agora_rtc_engine/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   contacts_service:
@@ -519,6 +530,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_picker/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   sms_autofill:
@@ -528,6 +541,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  agora_rtc_engine: 0820b82b3a71a8fcaf8b27c000622e671349f0ba
+  AgoraRtcEngine_iOS: ff8e085161ea98c917173783a899882f884dd9ef
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   cloud_firestore: a09fdd53707eadea99f93ca5ad8e95e4c1ab1108
   contacts_service: 849e1f84281804c8bfbec1b4c3eedcb23c5d3eca
@@ -551,11 +566,12 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sms_autofill: c461043483362c3f1709ee76eaae6eb570b31686
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
 
-PODFILE CHECKSUM: 30517025a2fecca2d72dac25f08abb5b9a8f1a56
+PODFILE CHECKSUM: 1d9342ac8a8c6d8bb720aca930aa3564edac29cc
 
 COCOAPODS: 1.11.2

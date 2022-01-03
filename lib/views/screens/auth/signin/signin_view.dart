@@ -67,7 +67,7 @@ class SignIn extends StatelessWidget {
 
   Text subTitle(BuildContext context, SigninViewModel _model) {
     return Text(
-      'Enter your mobile number',
+      'enter_phone'.translate,
       style: context.headline2
           .copyWith(fontSize: (context.width + context.height) / .7),
     );
@@ -75,7 +75,7 @@ class SignIn extends StatelessWidget {
 
   Text subsubTitle(BuildContext context, SigninViewModel _model) {
     return Text(
-      'We will send you a OTP code',
+      'send_code'.translate,
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
     );
@@ -90,7 +90,7 @@ class SignIn extends StatelessWidget {
         countryPicker(context, _model),
         Flexible(
             child: CustomTextField(
-          hintText: 'hint',
+          hintText: 'phone_number'.translate,
           controller: _model.controller,
         )),
         SizedBox(
@@ -128,7 +128,7 @@ class SignIn extends StatelessWidget {
         _model.register(context);
       },
       child: Text(
-        'Send OTP',
+        'send_otp'.translate,
         style: context.headline1
             .copyWith(fontSize: (context.width + context.height) / .85),
       ),

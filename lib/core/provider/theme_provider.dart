@@ -17,8 +17,7 @@ class ThemeProvider with ChangeNotifier {
   }
 
   Future<void> fetchLocale() async {
-    var isDark =
-        await LocaleManager.instance.getBoolValue(LocalManagerKeys.darkMode);
+    var isDark = LocaleManager.instance.getBoolValue(LocalManagerKeys.darkMode);
     if (!isDark) {
       _instance._themeData = getLightTheme();
       _themeData = getLightTheme();

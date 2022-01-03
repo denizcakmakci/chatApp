@@ -4,12 +4,14 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
-import 'package:flutter_template/core/constants/navigation/string_constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/base/base_view_model.dart';
 import '../../../../core/constants/navigation/navigation_constants.dart';
+import '../../../../core/constants/navigation/string_constants.dart';
+import '../../../../core/enums/local_manager_keys.dart';
+import '../../../../core/init/extensions/string/locale_text_extensions.dart';
 import '../../../../core/services/firebase/database_service.dart';
 
 part 'set_profile_view_model.g.dart';
@@ -43,8 +45,7 @@ abstract class _SetProfileViewModelBase with Store, BaseViewModel {
   }
 
   getImage() async {
-    var image = await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 50);
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     imagePath = File(image!.path);
     changeIsLoading();
     var ref = firebase_storage.FirebaseStorage.instance
@@ -66,15 +67,17 @@ abstract class _SetProfileViewModelBase with Store, BaseViewModel {
   signinSuccess(BuildContext context) {
     if (controller.text.isEmpty || controller.text.length < 4) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Giris alani bos birakilamaz.')),
+        SnackBar(content: Text('no_empty'.translate)),
       );
     } else {
       service.updateUsers(controller.text, photoURL ?? defaultUserPhoto);
+      localeManager.setBoolValue(LocalManagerKeys.isFirstApp, true);
+      goToHome();
     }
   }
 
   goToHome() {
-    navigation.navigateToPage(path: NavigationConstants.contacts);
+    navigation.navigateToPage(path: NavigationConstants.home);
   }
 
   @override

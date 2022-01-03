@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../../core/base/base_view_model.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/enums/local_manager_keys.dart';
 
 part 'splash_view_model.g.dart';
 
@@ -13,11 +14,16 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
 
   goToHome() {
-    navigation.navigateToPage(path: NavigationConstants.signin);
+    var isFirstApp = localeManager.getBoolValue(LocalManagerKeys.isFirstApp);
+    if (isFirstApp) {
+      navigation.navigateToPage(path: NavigationConstants.home);
+    } else {
+      navigation.navigateToPage(path: NavigationConstants.signin);
+    }
   }
 
   @override
   Future<void> init() async {
-    await Future.delayed(const Duration(seconds: 3), goToHome);
+    await Future.delayed(const Duration(seconds: 1), goToHome);
   }
 }

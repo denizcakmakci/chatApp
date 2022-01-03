@@ -16,7 +16,7 @@ class Verify extends StatelessWidget {
         viewModel: VerifyViewModel(),
         onPageBuilder: (BuildContext context, VerifyViewModel _model) => Stack(
               children: [
-                background(context, _model),
+                background(context),
                 Scaffold(
                   backgroundColor: Colors.transparent,
                   body: body(context, _model),
@@ -29,7 +29,7 @@ class Verify extends StatelessWidget {
         });
   }
 
-  Material background(BuildContext context, VerifyViewModel _model) {
+  Material background(BuildContext context) {
     return Material(
         color: context.backgroundLight,
         child: Image(
@@ -45,7 +45,7 @@ class Verify extends StatelessWidget {
           SizedBox(
             height: context.height * 5,
           ),
-          const Expanded(flex: 1, child: TitleText(text: 'OTP Verification')),
+          Expanded(flex: 1, child: TitleText(text: 'verify_otp'.translate)),
           const Spacer(flex: 1),
           Expanded(flex: 6, child: illustration()),
           const Spacer(flex: 2),
@@ -71,7 +71,7 @@ class Verify extends StatelessWidget {
       style: context.headline3
           .copyWith(fontSize: (context.width + context.height) / .9),
       children: <TextSpan>[
-        const TextSpan(text: 'Please enter the code send to '),
+        TextSpan(text: 'send_code_number'.translate),
         TextSpan(
             text:
                 _model.phoneNumber.substring(1, _model.phoneNumber.length - 1),
@@ -91,9 +91,9 @@ class Verify extends StatelessWidget {
         style: context.headline3
             .copyWith(fontSize: (context.width + context.height) / .9),
         children: <TextSpan>[
-          const TextSpan(text: 'Didn\'t resend the code?  '),
+          TextSpan(text: 'did_send_code'.translate),
           TextSpan(
-              text: 'Resend',
+              text: 'resend'.translate,
               style: context.headline2
                   .copyWith(fontSize: (context.width + context.height) / .9)),
         ],
@@ -125,7 +125,7 @@ class Verify extends StatelessWidget {
         _model.verifySmsCode();
       },
       child: Text(
-        'Verify OTP',
+        'verify_otp_button'.translate,
         style: context.headline1
             .copyWith(fontSize: (context.width + context.height) / .85),
       ),

@@ -31,7 +31,6 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
   @override
   void dispose() {
     super.dispose();
-    widget.onDispose!();
   }
 
   @override

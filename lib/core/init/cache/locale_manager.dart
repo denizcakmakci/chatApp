@@ -36,9 +36,9 @@ class LocaleManager {
   String getStringValue(LocalManagerKeys key) =>
       _preferences?.getString(key.toString()) ?? 'Not Found';
 
-  Future<bool> getBoolValue(LocalManagerKeys key) async =>
+  bool getBoolValue(LocalManagerKeys key) =>
       _preferences?.getBool(key.toString()) ?? false;
 
-  Future<int> getIntValue(LocalManagerKeys key) async =>
+  int getIntValue(LocalManagerKeys key) =>
       _preferences?.getInt(key.toString()) ?? -1;
 }
