@@ -21,9 +21,11 @@ extension ThemeExtension on BuildContext {
   TextStyle get headline4 => theme.textTheme.headline4!
       .copyWith(fontSize: 20, color: primaryLightColor);
   TextStyle get headline5 => theme.textTheme.headline5!
-      .copyWith(fontSize: 18, color: primaryLightColor);
+      .copyWith(fontSize: 18, fontWeight: FontWeight.bold);
   TextStyle get headline6 => theme.textTheme.headline6!
       .copyWith(fontSize: 16, color: primaryLightColor);
-  TextStyle get softText => theme.textTheme.headline6!
-      .copyWith(fontSize: 13, color: primaryLightColor.withOpacity(.6));
+  TextStyle get softText => theme.textTheme.headline6!.copyWith(
+      fontSize: 13,
+      color: primaryLightColor.withOpacity(.6),
+      overflow: TextOverflow.ellipsis);
 }

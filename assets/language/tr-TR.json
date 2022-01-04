@@ -1,5 +1,7 @@
 {
     "hello": "Merhaba",
+    "en": "EN",
+    "tr": "TR",
     "signup": "Kayıt ol",
     "enter_phone": "Telefon numaranızı girin",
     "send_code": "Size bir OTP kodu göndereceğiz.",
@@ -17,5 +19,7 @@
     "no_empty": "Giriş alanı boş bırakılamaz.",
     "invalid_phone": "Telefon numarası geçersiz.",
     "already_phone": "Telefon numarası zaten kayıtlı.",
-    "incoming": "Gelen çağrı..."
+    "incoming": "Gelen çağrı...",
+    "no_internet": "İnternet bağlantısı bulunamadı.\nBağlantınızı kontrol edin.",
+    "try_again": "Yeniden Dene"
 }

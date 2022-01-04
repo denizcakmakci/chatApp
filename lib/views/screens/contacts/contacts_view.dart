@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/base/base_view.dart';
-import '../../../core/helper/call.utilities.dart';
 import '../../../core/init/extensions/context/responsive_extension.dart';
 import '../../../core/init/extensions/context/theme_extension.dart';
+import '../../../core/provider/call_provider.dart';
+import '../../widgets/custom_list_tile.dart';
 import 'contacts_view_model.dart';
 
 class ContactsView extends StatelessWidget {
@@ -29,13 +31,11 @@ class ContactsView extends StatelessWidget {
 
   AppBar appBar(BuildContext context) {
     return AppBar(
-      elevation: 3,
-      shadowColor: context.lightPink,
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back)),
+          icon: const Icon(Icons.arrow_back_ios)),
       title: Text(
         'Contacts',
         style: context.headline3
@@ -55,14 +55,11 @@ class ContactsView extends StatelessWidget {
             child: ListView.builder(
               itemCount: _model.phones.length,
               itemBuilder: (context, index) {
-                return ListTile(
+                return CustomListTile(
                   onTap: () => listTileOnTap(context, _model, index),
-                  leading: _listTileLeading(context, _model, index),
-                  title: Text(_model.phones[index]['name'] ?? 'bos'),
-                  subtitle: Text(
-                    _model.phones[index]['phone_number'] ?? 'bos',
-                    style: context.softText,
-                  ),
+                  image: _model.phones[index]['photo_url'],
+                  title: _model.phones[index]['name'] ?? 'bos',
+                  subTitle: _model.phones[index]['phone_number'] ?? 'bos',
                 );
               },
             ),
@@ -71,28 +68,14 @@ class ContactsView extends StatelessWidget {
 
   Future<void> listTileOnTap(
       BuildContext context, ContactsViewModel _model, int index) async {
-    await _model.setReceiverUser(
+    var provider = Provider.of<CallProvider>(context, listen: false);
+    await provider.setReceiverUser(
         _model.phones[index]['user_id'],
         _model.phones[index]['name'],
         _model.phones[index]['photo_url'],
         _model.phones[index]['phone_number']);
-    await _model.per.cameraAndMicrophonePermissionsGranted()
-        ? CallUtils()
-            .dial(from: _model.sender!, to: _model.receiver!, context: context)
-        : null;
-  }
-
-  SizedBox _listTileLeading(
-      BuildContext context, ContactsViewModel _model, int index) {
-    return SizedBox(
-      width: context.width * 14,
-      height: context.height * 10,
-      child: ClipOval(
-          child: FadeInImage.assetNetwork(
-        placeholder: 'assets/gifs/loading.gif',
-        image: _model.phones[index]['photo_url'],
-        fit: BoxFit.cover,
-      )),
-    );
+    await provider.setUserName(_model.phones[index]['name']);
+    await provider.setphotoUrl(_model.phones[index]['photo_url']);
+    _model.navigateChatScreen();
   }
 }

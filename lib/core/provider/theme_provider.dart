@@ -5,7 +5,7 @@ import '../../core/init/theme/light_theme.dart';
 import '../enums/local_manager_keys.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData = getDarkTheme();
+  ThemeData _themeData = getLightTheme();
   static final ThemeProvider _instance = ThemeProvider();
   static ThemeProvider get instance => _instance;
 

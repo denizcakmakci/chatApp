@@ -26,10 +26,11 @@ class SplashView extends StatelessWidget {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Center(
-                  child: FlutterLogo(
-                    size: context.width * 40,
-                  ),
-                ),
+                    child: Image.asset(
+                  'assets/gifs/output-onlinegiftools.gif',
+                  width: 350,
+                  height: 300,
+                )),
               ),
             ),
         onModelReady: (model) {

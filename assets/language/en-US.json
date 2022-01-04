@@ -1,5 +1,7 @@
 {
     "hello": "Hi",
+    "en": "EN",
+    "tr": "TR",
     "signup": "Sign Up",
     "enter_phone": "Enter your mobile number",
     "send_code": "We will send you a OTP code",
@@ -17,5 +19,7 @@
     "no_empty": "The input field cannot be left blank.",
     "invalid_phone": "Phone number is invalid.",
     "already_phone": "Phone number already registered.",
-    "incoming": "Incoming..."
+    "incoming": "Incoming...",
+    "no_internet": "No internet connection found.\nCheck your connection.",
+    "try_again": "Try Again"
 }

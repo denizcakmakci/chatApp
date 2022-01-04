@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import 'core/enums/local_manager_keys.dart';
 import 'core/init/cache/locale_manager.dart';
 import 'core/init/language/lang_manager.dart';
 import 'core/init/navigation/navigation_routes.dart';
@@ -24,6 +25,10 @@ void main() async {
   runApp(EasyLocalization(
     supportedLocales: LanguageManager.instance.supportedLocales,
     path: LanguageManager.langPath,
+    startLocale: LocaleManager.instance.getStringValue(LocalManagerKeys.lang) !=
+            'Not Found'
+        ? Locale(LocaleManager.instance.getStringValue(LocalManagerKeys.lang))
+        : LanguageManager.instance.enLocale,
     child: MultiProvider(
       providers: [...ApplicationProvider.instance!.dependItems],
       child: DevicePreview(

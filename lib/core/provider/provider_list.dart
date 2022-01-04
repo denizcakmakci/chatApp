@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 import '../../core/init/navigation/navigation_service.dart';
+import 'call_provider.dart';
 import 'theme_provider.dart';
 import 'user_provider.dart';
 
@@ -20,6 +21,9 @@ class ApplicationProvider {
     ),
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => CallProvider(),
     ),
     Provider.value(value: NavigationService.instance)
   ];

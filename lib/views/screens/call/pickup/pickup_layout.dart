@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/init/extensions/context/theme_extension.dart';
 import '../../../../core/model/call.dart';
 import '../../../../core/provider/user_provider.dart';
 import '../../../../core/services/firebase/calll_service.dart';
@@ -39,9 +40,11 @@ class PickupLayout extends StatelessWidget {
               return scaffold;
             },
           )
-        : const Scaffold(
+        : Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: context.primaryColor,
+              ),
             ),
           );
   }
