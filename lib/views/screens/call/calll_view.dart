@@ -9,6 +9,7 @@ import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/navigation/string_constants.dart';
@@ -43,6 +44,7 @@ class _CallViewState extends State<CallView> {
     _engine.leaveChannel();
     _engine.destroy();
     super.dispose();
+    FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
   }
 
   @override
@@ -50,6 +52,11 @@ class _CallViewState extends State<CallView> {
     super.initState();
     initializeAgora();
     addPostFrameCallback();
+    secureScreen();
+  }
+
+  Future<void> secureScreen() async {
+    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   }
 
   addPostFrameCallback() {

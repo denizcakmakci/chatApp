@@ -3,4 +3,4 @@ const String defaultUserPhoto =
 
 const String appId = '00fd668fcaed4d4081bea2d00c1ae6dd';
 const String appToken =
-    '00600fd668fcaed4d4081bea2d00c1ae6ddIACXYWaOGRtei11QlcL+wDJeQnjdR5ieuomszuOQJF37RNzDPrsAAAAAEAB/8F67c4nVYQEAAQByidVh';
+    '00600fd668fcaed4d4081bea2d00c1ae6ddIABFR130rjw5sOtxPJgnW6kdDBaOvdQ8YJUIer79eykTvtzDPrsAAAAAEACBgxuCVzPrYQEAAQBXM+th';

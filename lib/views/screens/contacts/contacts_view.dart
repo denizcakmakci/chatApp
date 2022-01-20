@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/init/extensions/extension_shelf.dart';
 import '../../../core/base/base_view.dart';
 import '../../../core/init/extensions/context/responsive_extension.dart';
 import '../../../core/init/extensions/context/theme_extension.dart';
 import '../../../core/provider/call_provider.dart';
 import '../../widgets/custom_list_tile.dart';
+import '../call/pickup/pickup_layout.dart';
 import 'contacts_view_model.dart';
 
 class ContactsView extends StatelessWidget {
@@ -18,10 +20,11 @@ class ContactsView extends StatelessWidget {
         viewModel: ContactsViewModel(),
         onPageBuilder: (BuildContext context, ContactsViewModel _model) =>
             Observer(builder: (_) {
-              return Scaffold(
+              return PickupLayout(
+                  scaffold: Scaffold(
                 appBar: appBar(context),
                 body: body(context, _model),
-              );
+              ));
             }),
         onModelReady: (model) {
           model.setContext(context);
@@ -32,12 +35,12 @@ class ContactsView extends StatelessWidget {
   AppBar appBar(BuildContext context) {
     return AppBar(
       leading: IconButton(
-          onPressed: () {
+          onPressed: () async {
             Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios)),
       title: Text(
-        'Contacts',
+        'contacts'.translate,
         style: context.headline3
             .copyWith(fontSize: (context.width + context.height) / .7),
       ),

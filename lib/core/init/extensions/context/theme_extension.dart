@@ -9,6 +9,7 @@ extension ThemeExtension on BuildContext {
   Color get primaryLightColor => theme.primaryColorLight;
   Color get primaryDarkColor => theme.primaryColorDark;
   Color get lightPink => const Color(0xffFFE6D2);
+  Color get lightBlue => const Color(0xff68AAFF);
 
   TextStyle get headline1 => theme.textTheme.headline1!
       .copyWith(fontWeight: FontWeight.w600, color: primaryLightColor);

@@ -21,5 +21,7 @@
     "already_phone": "Phone number already registered.",
     "incoming": "Incoming...",
     "no_internet": "No internet connection found.\nCheck your connection.",
-    "try_again": "Try Again"
+    "try_again": "Try Again",
+    "message": "Message...",
+    "contacts": "Contacts"
 }

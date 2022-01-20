@@ -58,11 +58,11 @@ abstract class _VerifyViewModelBase with Store, BaseViewModel {
       verificationCompleted: (phoneAuthCredential) async {
         log("verify phone number : verification completed");
         await _auth.signInWithCredential(phoneAuthCredential);
-        // var _uid = _auth.currentUser!.uid;
-        // await localeManager.setStringValue(LocalManagerKeys.token, _uid);
-        // await service
-        //     .addUsers(phoneNumber.substring(1, phoneNumber.length - 1));
-        // navigation.navigateToPage(path: NavigationConstants.setProfile);
+        var _uid = _auth.currentUser!.uid;
+        await localeManager.setStringValue(LocalManagerKeys.token, _uid);
+        await service
+            .addUsers(phoneNumber.substring(1, phoneNumber.length - 1));
+        navigation.navigateToPage(path: NavigationConstants.setProfile);
       },
       verificationFailed: (FirebaseAuthException e) {
         changeLoading(false);

@@ -21,5 +21,7 @@
     "already_phone": "Telefon numarası zaten kayıtlı.",
     "incoming": "Gelen çağrı...",
     "no_internet": "İnternet bağlantısı bulunamadı.\nBağlantınızı kontrol edin.",
-    "try_again": "Yeniden Dene"
+    "try_again": "Yeniden Dene",
+    "message": "Mesaj...",
+    "contacts": "Kişiler"
 }

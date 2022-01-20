@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -31,11 +30,8 @@ void main() async {
         : LanguageManager.instance.enLocale,
     child: MultiProvider(
       providers: [...ApplicationProvider.instance!.dependItems],
-      child: DevicePreview(
-        enabled: false, //!kReleaseMode,
-        builder: (context) => _MyApp(
-          themeProvider: themeProvider,
-        ),
+      child: _MyApp(
+        themeProvider: themeProvider,
       ),
     ),
   ));

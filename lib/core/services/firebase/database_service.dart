@@ -59,9 +59,10 @@ class DatabaseService {
     return isValidUser;
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> getUserDetails() async {
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUserDetails(
+      {String? userId}) async {
     var user = LocaleManager.instance.getStringValue(LocalManagerKeys.token);
-    var ref = _firestore.collection('users').doc(user).get();
+    var ref = _firestore.collection('users').doc(userId ?? user).get();
     return ref;
   }
 

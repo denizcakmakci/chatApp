@@ -3,6 +3,9 @@ import 'package:provider/single_child_widget.dart';
 
 import '../../core/init/navigation/navigation_service.dart';
 import 'call_provider.dart';
+import 'message_provider.dart';
+import 'scroll_provider.dart';
+import 'socket_provider.dart';
 import 'theme_provider.dart';
 import 'user_provider.dart';
 
@@ -24,6 +27,15 @@ class ApplicationProvider {
     ),
     ChangeNotifierProvider(
       create: (context) => CallProvider(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => SocketProvider(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => MessageProvider(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => ScrollProvider(),
     ),
     Provider.value(value: NavigationService.instance)
   ];

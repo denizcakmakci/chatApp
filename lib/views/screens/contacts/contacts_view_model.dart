@@ -33,7 +33,7 @@ abstract class _ContactsViewModelBase with Store, BaseViewModel {
   _initFunction() async {
     var _contacts = await ContactsService.getContacts(withThumbnails: false);
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < _contacts.length; i++) {
       // _contacts.length
       contacts.add('${_contacts[i].phones?.first.value}'
           .replaceAll('-', '')
